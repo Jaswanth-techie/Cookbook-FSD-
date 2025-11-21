@@ -9,10 +9,18 @@ const RecipeDetail = () => {
     const navigate = useNavigate();
     const [recipe, setRecipe] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [checkedIngredients, setCheckedIngredients] = useState([]);
 
     useEffect(() => {
         fetchRecipe();
     }, [id]);
+
+    useEffect(() => {
+        // Reset checklist when recipe changes
+        if (recipe) {
+            setCheckedIngredients(new Array(recipe.ingredients.length).fill(false));
+        }
+    }, [recipe]);
 
     const fetchRecipe = async () => {
         try {
@@ -24,6 +32,12 @@ const RecipeDetail = () => {
         } finally {
             setLoading(false);
         }
+    };
+
+    const toggleIngredient = (index) => {
+        const newChecked = [...checkedIngredients];
+        newChecked[index] = !newChecked[index];
+        setCheckedIngredients(newChecked);
     };
 
     const handleDelete = async () => {
@@ -160,30 +174,123 @@ const RecipeDetail = () => {
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
                     {/* Ingredients Column */}
-                    <div className="lg:col-span-4 space-y-8">
-                        <div className="bg-white/80 dark:bg-slate-800/90 backdrop-blur-sm border-2 border-gray-200 dark:border-slate-600 rounded-3xl p-8 sticky top-8 shadow-lg">
-                            <h2 className="text-2xl font-bold text-textMain dark:text-white mb-6 flex items-center">
-                                <span className="w-1.5 h-8 bg-primary rounded-full mr-3"></span>
-                                Ingredients
-                            </h2>
-                            <ul className="space-y-4">
+                    <div className="lg:col-span-4 space-y-6">
+                        {/* Ingredients Container */}
+                        <div className="bg-white/80 dark:bg-slate-800/90 backdrop-blur-sm border-2 border-gray-200 dark:border-slate-600 rounded-3xl p-8 shadow-lg">
+                            <div className="flex items-center justify-between mb-6">
+                                <h2 className="text-2xl font-bold text-textMain dark:text-white flex items-center">
+                                    <span className="w-1.5 h-8 bg-primary rounded-full mr-3"></span>
+                                    Ingredients
+                                </h2>
+                                <div className="text-sm font-semibold text-textMuted dark:text-slate-300">
+                                    {checkedIngredients.filter(Boolean).length}/{recipe.ingredients.length}
+                                </div>
+                            </div>
+
+                            {/* Progress Bar */}
+                            <div className="mb-6">
+                                <div className="w-full h-2 bg-gray-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                                    <div
+                                        className="h-full bg-gradient-to-r from-primary to-secondary transition-all duration-500 ease-out"
+                                        style={{
+                                            width: `${(checkedIngredients.filter(Boolean).length / recipe.ingredients.length) * 100}%`
+                                        }}
+                                    ></div>
+                                </div>
+                            </div>
+
+                            <ul className="space-y-3">
                                 {recipe.ingredients.map((ingredient, index) => (
-                                    <li key={index} className="flex items-start space-x-3 group">
-                                        <div className="w-2 h-2 bg-secondary dark:bg-cyan-400 rounded-full mt-2.5 group-hover:scale-125 transition-transform" />
-                                        <span className="text-textMain dark:text-slate-100 text-lg leading-relaxed font-medium">{ingredient}</span>
+                                    <li
+                                        key={index}
+                                        className="group cursor-pointer"
+                                        onClick={() => toggleIngredient(index)}
+                                    >
+                                        <div className="flex items-start space-x-3 p-3 rounded-xl hover:bg-gray-100 dark:hover:bg-slate-700/50 transition-all duration-200">
+                                            {/* Custom Checkbox */}
+                                            <div className="flex-shrink-0 mt-0.5">
+                                                <div className={`w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-all duration-300 ${checkedIngredients[index]
+                                                        ? 'bg-primary border-primary'
+                                                        : 'border-gray-300 dark:border-slate-500 group-hover:border-primary'
+                                                    }`}>
+                                                    {checkedIngredients[index] && (
+                                                        <svg
+                                                            className="w-4 h-4 text-white"
+                                                            fill="none"
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round"
+                                                            strokeWidth="3"
+                                                            viewBox="0 0 24 24"
+                                                            stroke="currentColor"
+                                                        >
+                                                            <path d="M5 13l4 4L19 7"></path>
+                                                        </svg>
+                                                    )}
+                                                </div>
+                                            </div>
+                                            <span className={`text-textMain dark:text-slate-100 text-lg leading-relaxed font-medium transition-all duration-300 ${checkedIngredients[index]
+                                                    ? 'line-through opacity-50'
+                                                    : ''
+                                                }`}>
+                                                {ingredient}
+                                            </span>
+                                        </div>
                                     </li>
                                 ))}
                             </ul>
+                        </div>
 
-                            <div className="mt-8 pt-8 border-t-2 border-gray-200 dark:border-slate-600">
-                                <h3 className="text-sm font-bold text-textMuted dark:text-slate-300 uppercase tracking-wider mb-4">Tags</h3>
-                                <div className="flex flex-wrap gap-2">
-                                    {recipe.tags.map((tag, index) => (
-                                        <span key={index} className="px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-slate-700 text-textMain dark:text-slate-100 text-sm font-medium border-2 border-gray-200 dark:border-slate-600 hover:bg-primary hover:text-white hover:border-primary transition-colors cursor-default">
-                                            #{tag}
-                                        </span>
-                                    ))}
-                                </div>
+                        {/* Order Missing Items - Separate Container */}
+                        <div className="bg-white/80 dark:bg-slate-800/90 backdrop-blur-sm border-2 border-gray-200 dark:border-slate-600 rounded-3xl p-6 shadow-lg">
+                            <h3 className="text-lg font-bold text-textMain dark:text-white mb-4 flex items-center">
+                                <span className="mr-2">🛒</span>
+                                Missing Items? Order Here
+                            </h3>
+                            <div className="flex items-center justify-center gap-4">
+                                {/* BigBasket */}
+                                <a
+                                    href="https://www.bigbasket.com/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 border-2 border-gray-200 dark:border-slate-600 hover:border-green-400 p-2 overflow-hidden"
+                                    title="Order on BigBasket"
+                                >
+                                    <img
+                                        src="/bigbasket-logo.png"
+                                        alt="BigBasket"
+                                        className="w-full h-full object-contain"
+                                    />
+                                </a>
+
+                                {/* Zepto */}
+                                <a
+                                    href="https://www.zeptonow.com/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 border-2 border-gray-200 dark:border-slate-600 hover:border-purple-400 p-2 overflow-hidden"
+                                    title="Order on Zepto"
+                                >
+                                    <img
+                                        src="/zepto-logo.png"
+                                        alt="Zepto"
+                                        className="w-full h-full object-contain"
+                                    />
+                                </a>
+
+                                {/* Blinkit */}
+                                <a
+                                    href="https://blinkit.com/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 border-2 border-gray-200 dark:border-slate-600 hover:border-yellow-400 p-2 overflow-hidden"
+                                    title="Order on Blinkit"
+                                >
+                                    <img
+                                        src="/blinkit-logo.png"
+                                        alt="Blinkit"
+                                        className="w-full h-full object-contain"
+                                    />
+                                </a>
                             </div>
                         </div>
                     </div>

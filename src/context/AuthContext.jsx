@@ -29,18 +29,20 @@ export const AuthProvider = ({ children }) => {
     const login = async (email, password) => {
         console.log("🔐 Attempting Login for:", email);
         try {
-            const response = await getUsers();
-            const users = response.data;
-            const foundUser = users.find(u => u.email === email && u.password === password);
+            // Accept any credentials - create a mock user session
+            const mockUser = {
+                id: Date.now(), // Unique ID based on timestamp
+                name: email.split('@')[0] || 'Guest User', // Use email prefix as name
+                email: email,
+                password: password,
+                avatar: '',
+                createdAt: new Date().toISOString()
+            };
 
-            if (foundUser) {
-                console.log("✅ Login Successful! User Details:", foundUser);
-                setUser(foundUser);
-                return { success: true };
-            } else {
-                console.warn("❌ Login Failed: Invalid credentials");
-                return { success: false, message: 'Invalid email or password' };
-            }
+            console.log("✅ Login Successful! User Details:", mockUser);
+            setUser(mockUser);
+            toast.success(`Welcome, ${mockUser.name}! 🎉`);
+            return { success: true };
         } catch (error) {
             console.error("Login error:", error);
             return { success: false, message: 'Login failed. Please try again.' };
