@@ -7,132 +7,17 @@
       "password": "reactismyfavourite",
       "avatar": "",
       "createdAt": "2025-11-21T13:13:40.202Z"
+    },
+    {
+      "name": "jaswanth",
+      "email": "evarrameerantha@gmail.com",
+      "password": "Jaswanth1234!",
+      "avatar": "",
+      "createdAt": "2025-11-23T11:55:00.009Z",
+      "id": "suZ7rDo"
     }
   ],
   "recipes": [
-    {
-      "id": "1",
-      "title": "Spaghetti Carbonara",
-      "description": "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.",
-      "ingredients": [
-        "400g Spaghetti",
-        "200g Pancetta",
-        "4 Large Eggs",
-        "100g Pecorino Romano",
-        "Black Pepper"
-      ],
-      "steps": [
-        "Bring a large pot of salted water to boil. Add 400g spaghetti and cook according to package instructions until al dente (usually 8-10 minutes). Reserve 1 cup of pasta water before draining.",
-        "While pasta cooks, cut 200g pancetta into small cubes. Heat a large skillet over medium heat and fry the pancetta for 5-7 minutes until crispy and golden. No oil needed as pancetta releases its own fat.",
-        "In a bowl, whisk together 4 large eggs and 100g freshly grated Pecorino Romano cheese until well combined. Add a generous amount of freshly ground black pepper.",
-        "Remove the skillet from heat. Add the drained hot pasta to the pancetta and toss well. Let it cool for 30 seconds, then add the egg and cheese mixture, tossing quickly and continuously to create a creamy sauce. Add reserved pasta water a little at a time if needed to achieve desired consistency.",
-        "Serve immediately on warm plates with extra Pecorino Romano and plenty of freshly ground black pepper. The key is to work quickly so the eggs create a creamy sauce without scrambling. Buon appetito!"
-      ],
-      "prepTime": "10 mins",
-      "cookTime": "15 mins",
-      "servings": 4,
-      "image": "https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=800&q=80",
-      "cuisine": "Italian",
-      "tags": [
-        "Pasta",
-        "Quick",
-        "Dinner"
-      ],
-      "isFavorite": true
-    },
-    {
-      "id": "2",
-      "title": "Chicken Tikka Masala",
-      "description": "Chunks of roasted marinated chicken in a spiced curry sauce.",
-      "ingredients": [
-        "500g Chicken Breast",
-        "1 cup Yogurt",
-        "2 tbsp Garam Masala",
-        "1 can Tomato Puree",
-        "1 cup Heavy Cream"
-      ],
-      "steps": [
-        "Cut 500g chicken breast into bite-sized cubes. In a bowl, mix 1 cup yogurt, 1 tbsp garam masala, 1 tsp turmeric, 1 tsp red chili powder, ginger-garlic paste, and salt. Marinate chicken for at least 2 hours or overnight.",
-        "Preheat oven to 220°C (425°F) or prepare a grill. Thread chicken pieces onto skewers and grill/bake for 15-20 minutes, turning occasionally, until slightly charred and cooked through. Set aside.",
-        "In a large pan, heat 2 tbsp oil or butter. Add 1 chopped onion and sauté until golden. Add 1 can (400g) tomato puree, 1 tbsp garam masala, 1 tsp paprika, 1/2 tsp cumin, and salt. Simmer for 10-12 minutes, stirring occasionally.",
-        "Add the grilled chicken pieces to the sauce. Pour in 1 cup heavy cream and mix well. Simmer on low heat for 8-10 minutes, allowing the flavors to meld together.",
-        "Taste and adjust seasoning. Garnish with fresh coriander leaves and a swirl of cream. Serve hot with naan bread, basmati rice, or roti. Perfect comfort food!"
-      ],
-      "prepTime": "20 mins",
-      "cookTime": "30 mins",
-      "servings": 4,
-      "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=80",
-      "cuisine": "Indian",
-      "tags": [
-        "Curry",
-        "Spicy",
-        "Chicken"
-      ],
-      "isFavorite": false
-    },
-    {
-      "id": "4",
-      "title": "Vegetable Stir Fry",
-      "description": "A healthy and colorful mix of vegetables stir-fried in a savory sauce.",
-      "ingredients": [
-        "1 Broccoli Head",
-        "2 Carrots",
-        "1 Bell Pepper",
-        "200g Snap Peas",
-        "Soy Sauce",
-        "Ginger",
-        "Garlic"
-      ],
-      "steps": [
-        "Wash and chop all vegetables: cut broccoli into small florets, peel and julienne 2 carrots, slice 1 bell pepper into strips, and trim 200g snap peas. Keep them separated.",
-        "Prepare the sauce by mixing 3 tbsp soy sauce, 1 tbsp rice vinegar, 1 tsp sesame oil, and 1 tsp cornstarch in a small bowl. Set aside.",
-        "Heat 2 tbsp vegetable oil in a large wok or skillet over high heat. Add 2 cloves minced garlic and 1 tbsp grated fresh ginger. Stir-fry for 30 seconds until fragrant.",
-        "Add the harder vegetables first (carrots and broccoli) and stir-fry for 3-4 minutes. Then add bell pepper and snap peas. Continue stir-frying for another 3-4 minutes until vegetables are tender-crisp and vibrant in color.",
-        "Pour the prepared sauce over the vegetables and toss everything together for 1-2 minutes until the sauce thickens and coats the vegetables. Serve immediately over steamed rice or noodles. Garnish with sesame seeds if desired."
-      ],
-      "prepTime": "15 mins",
-      "cookTime": "10 mins",
-      "servings": 2,
-      "image": "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=800&q=80",
-      "cuisine": "Asian",
-      "tags": [
-        "Vegetarian",
-        "Healthy",
-        "Quick"
-      ],
-      "isFavorite": false
-    },
-    {
-      "id": "5",
-      "title": "Tacos al Pastor",
-      "description": "Mexican tacos made with spit-grilled pork.",
-      "ingredients": [
-        "500g Pork Shoulder",
-        "Pineapple",
-        "Corn Tortillas",
-        "Onion",
-        "Cilantro",
-        "Chili Powder"
-      ],
-      "steps": [
-        "Cut 500g pork shoulder into thin slices. In a bowl, combine 1/2 cup pineapple juice, 2 tbsp chili powder, 1 tsp cumin, 1 tsp oregano, 2 cloves minced garlic, and salt. Marinate pork for at least 2 hours or overnight for best flavor.",
-        "Heat a large skillet or grill over medium-high heat. Cook the marinated pork in batches for 4-5 minutes per side until nicely charred and cooked through. Chop into small pieces.",
-        "Cut fresh pineapple into small chunks. In the same skillet, quickly char the pineapple pieces for 2-3 minutes. Set aside.",
-        "Warm corn tortillas on a dry skillet or directly over a gas flame for 15-20 seconds per side until soft and pliable.",
-        "Assemble tacos: place cooked pork on each tortilla, top with charred pineapple, finely chopped onion, fresh cilantro, and a squeeze of lime. Serve with your favorite salsa. ¡Buen provecho!"
-      ],
-      "prepTime": "30 mins",
-      "cookTime": "20 mins",
-      "servings": 4,
-      "image": "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=800&q=80",
-      "cuisine": "Mexican",
-      "tags": [
-        "Tacos",
-        "Pork",
-        "Street Food"
-      ],
-      "isFavorite": true
-    },
     {
       "id": "6",
       "title": "Greek Salad",
@@ -187,7 +72,7 @@
       "prepTime": "40 mins",
       "cookTime": "20 mins",
       "servings": 4,
-      "image": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80",
+      "image": "/assets/recipes/sushi-rolls.jpg",
       "cuisine": "Japanese",
       "tags": [
         "Sushi",
@@ -218,7 +103,7 @@
       "prepTime": "10 mins",
       "cookTime": "15 mins",
       "servings": 4,
-      "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=800&q=80",
+      "image": "/assets/recipes/pancakes.png",
       "cuisine": "American",
       "tags": [
         "Breakfast",
@@ -249,7 +134,7 @@
       "prepTime": "15 mins",
       "cookTime": "10 mins",
       "servings": 2,
-      "image": "https://images.unsplash.com/photo-1559314809-0d155014e29e?auto=format&fit=crop&w=800&q=80",
+      "image": "/assets/recipes/pad-thai.png",
       "cuisine": "Thai",
       "tags": [
         "Noodles",
@@ -280,7 +165,7 @@
       "prepTime": "20 mins",
       "cookTime": "30 mins",
       "servings": 4,
-      "image": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=800&q=80",
+      "image": "/assets/recipes/butter-chicken.png",
       "cuisine": "Indian",
       "tags": [
         "Curry",
@@ -311,7 +196,7 @@
       "prepTime": "30 mins",
       "cookTime": "40 mins",
       "servings": 6,
-      "image": "https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=800&q=80",
+      "image": "/assets/recipes/chicken-biryani.jpg",
       "cuisine": "Indian",
       "tags": [
         "Rice",
@@ -342,7 +227,7 @@
       "prepTime": "20 mins",
       "cookTime": "20 mins",
       "servings": 4,
-      "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80",
+      "image": "/assets/recipes/palak-paneer.jpg",
       "cuisine": "Indian",
       "tags": [
         "Vegetarian",
@@ -373,7 +258,7 @@
       "prepTime": "10 mins",
       "cookTime": "20 mins",
       "servings": 4,
-      "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=80",
+      "image": "/assets/recipes/chana-masala.png",
       "cuisine": "Indian",
       "tags": [
         "Vegetarian",
@@ -404,7 +289,7 @@
       "prepTime": "40 mins",
       "cookTime": "20 mins",
       "servings": 6,
-      "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80",
+      "image": "/assets/recipes/samosas.jpg",
       "cuisine": "Indian",
       "tags": [
         "Snack",
@@ -435,7 +320,7 @@
       "prepTime": "2 hrs",
       "cookTime": "10 mins",
       "servings": 4,
-      "image": "https://images.unsplash.com/photo-1626074353765-517a681e40be?auto=format&fit=crop&w=800&q=80",
+      "image": "/assets/recipes/garlic-naan.png",
       "cuisine": "Indian",
       "tags": [
         "Bread",
@@ -466,7 +351,7 @@
       "prepTime": "20 mins",
       "cookTime": "1 hr",
       "servings": 4,
-      "image": "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=800&q=80",
+      "image": "/assets/recipes/lamb-vindaloo.jpg",
       "cuisine": "Indian",
       "tags": [
         "Spicy",
@@ -497,7 +382,7 @@
       "prepTime": "8 hrs",
       "cookTime": "30 mins",
       "servings": 4,
-      "image": "https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?auto=format&fit=crop&w=800&q=80",
+      "image": "/assets/recipes/tandoori-chicken.png",
       "cuisine": "Indian",
       "tags": [
         "Grilled",
@@ -528,7 +413,7 @@
       "prepTime": "12 hrs",
       "cookTime": "1 hr",
       "servings": 6,
-      "image": "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=800&q=80",
+      "image": "/assets/recipes/dal-makhani.jpg",
       "cuisine": "Indian",
       "tags": [
         "Vegetarian",
@@ -559,7 +444,7 @@
       "prepTime": "40 mins",
       "cookTime": "30 mins",
       "servings": 4,
-      "image": "https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?auto=format&fit=crop&w=800&q=80",
+      "image": "/assets/recipes/malai-kofta.jpg",
       "cuisine": "Indian",
       "tags": [
         "Vegetarian",
@@ -593,7 +478,7 @@
       "prepTime": "15 mins",
       "cookTime": "20 mins",
       "servings": 4,
-      "image": "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80",
+      "image": "/assets/recipes/aloo-gobi.jpg",
       "cuisine": "Indian",
       "tags": [
         "Vegetarian",
@@ -628,7 +513,7 @@
       "prepTime": "15 mins",
       "cookTime": "30 mins",
       "servings": 4,
-      "image": "https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=800&q=80",
+      "image": "/assets/recipes/risotto.jpg",
       "cuisine": "Italian",
       "tags": [
         "Italian",
@@ -637,6 +522,129 @@
         "Gluten-Free"
       ],
       "isFavorite": false
+    },
+    {
+      "id": "23",
+      "title": "Chettinad Chicken",
+      "description": "Spicy and aromatic chicken curry from the Chettinad region of Tamil Nadu.",
+      "ingredients": [
+        "500g Chicken",
+        "Chettinad Masala",
+        "Coconut",
+        "Curry Leaves",
+        "Onions",
+        "Tomatoes"
+      ],
+      "steps": [
+        "Dry roast spices (coriander, cumin, fennel, pepper, red chilies) and coconut until golden. Grind to a fine paste.",
+        "Heat oil in a pan, add curry leaves and onions. Sauté until golden brown.",
+        "Add tomatoes and cook until soft. Add the ground masala paste and cook for 5 minutes.",
+        "Add chicken pieces and coat well with the masala. Add water and salt.",
+        "Cover and cook until chicken is tender and the gravy thickens. Garnish with fresh coriander."
+      ],
+      "prepTime": "20 mins",
+      "cookTime": "40 mins",
+      "servings": 4,
+      "image": "/assets/recipes/chettinad-chicken.jpg",
+      "cuisine": "Indian",
+      "tags": [
+        "Spicy",
+        "Curry",
+        "Chicken"
+      ],
+      "isFavorite": false
+    },
+    {
+      "id": "24",
+      "title": "Gongura Chicken",
+      "description": "Tangy and spicy chicken curry made with sorrel leaves (gongura).",
+      "ingredients": [
+        "500g Chicken",
+        "2 bunches Gongura Leaves",
+        "Onions",
+        "Green Chilies",
+        "Ginger-Garlic Paste",
+        "Spices"
+      ],
+      "steps": [
+        "Wash gongura leaves and cook them with a little water until soft. Mash into a paste.",
+        "Marinate chicken with ginger-garlic paste, chili powder, and salt.",
+        "Heat oil, sauté onions and green chilies. Add marinated chicken and cook until half done.",
+        "Add the gongura paste and cook on low heat until the oil separates and chicken is fully cooked.",
+        "Serve hot with steamed rice and ghee."
+      ],
+      "prepTime": "20 mins",
+      "cookTime": "30 mins",
+      "servings": 4,
+      "image": "/assets/recipes/gongura-chicken.jpg",
+      "cuisine": "Indian",
+      "tags": [
+        "Spicy",
+        "Tangy",
+        "Chicken"
+      ],
+      "isFavorite": false
+    },
+    {
+      "id": "25",
+      "title": "Hyderabadi Haleem",
+      "description": "A rich and wholesome stew made of meat, lentils, and pounded wheat.",
+      "ingredients": [
+        "500g Mutton (Boneless)",
+        "1/2 cup Broken Wheat",
+        "1/4 cup Lentils (Chana/Urad)",
+        "Ghee",
+        "Fried Onions",
+        "Spices"
+      ],
+      "steps": [
+        "Soak broken wheat and lentils for 2 hours. Cook mutton with ginger-garlic paste and spices until very tender.",
+        "Cook the soaked wheat and lentils until soft. Mash everything together with the mutton.",
+        "Add ghee and cook on low heat, stirring continuously (ghota) until the mixture becomes sticky and elastic.",
+        "Garnish with fried onions, cashew nuts, coriander, and lemon juice. Serve hot."
+      ],
+      "prepTime": "4 hrs",
+      "cookTime": "2 hrs",
+      "servings": 6,
+      "image": "/assets/recipes/hyderabadi-haleem.png",
+      "cuisine": "Indian",
+      "tags": [
+        "Rich",
+        "Meat",
+        "Traditional"
+      ],
+      "isFavorite": true
+    },
+    {
+      "id": "26",
+      "title": "Mutton Biryani",
+      "description": "A classic royal dish with layers of spiced mutton and fragrant basmati rice.",
+      "ingredients": [
+        "500g Mutton",
+        "2 cups Basmati Rice",
+        "Yogurt",
+        "Fried Onions",
+        "Saffron",
+        "Whole Spices"
+      ],
+      "steps": [
+        "Marinate mutton with yogurt, ginger-garlic paste, raw papaya paste (tenderizer), and spices overnight.",
+        "Cook basmati rice with whole spices until 70% done.",
+        "Layer the marinated mutton and rice in a heavy-bottomed pot. Top with fried onions, saffron milk, and ghee.",
+        "Seal the pot and cook on low heat (dum) for 45 minutes to 1 hour.",
+        "Let it rest for 10 minutes before serving. Serve with raita and mirchi ka salan."
+      ],
+      "prepTime": "12 hrs",
+      "cookTime": "1 hr",
+      "servings": 6,
+      "image": "/assets/recipes/mutton-biryani.jpg",
+      "cuisine": "Indian",
+      "tags": [
+        "Rice",
+        "Spicy",
+        "Dinner"
+      ],
+      "isFavorite": true
     }
   ]
 }

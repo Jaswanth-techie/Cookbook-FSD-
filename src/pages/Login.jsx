@@ -53,9 +53,9 @@ const Login = () => {
     };
 
     return (
-        <div className="min-h-screen relative overflow-hidden">
+        <div className="min-h-screen relative overflow-hidden bg-black">
             {/* Full Background Chef Image */}
-            <div className="absolute inset-0 z-0">
+            <div className="fixed inset-0 z-0">
                 <img
                     src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=1920&q=80"
                     alt="Professional Chef Cooking"
@@ -75,14 +75,11 @@ const Login = () => {
             </div>
 
             {/* Content Container */}
-            <div className="relative z-20 min-h-screen flex flex-col items-center justify-center p-6">
+            <div className="relative z-20 min-h-screen flex flex-col items-center justify-start pt-16 p-6">
 
                 {/* Branding & Stats - Now at the top */}
                 <div className="text-center mb-8 animate-fade-in">
-                    {/* Logo */}
-                    <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-primary to-secondary rounded-full mb-6 shadow-2xl animate-bounce-slow">
-                        <ChefHat size={48} className="text-white" />
-                    </div>
+                    {/* Logo Removed */}
 
                     {/* Main Heading */}
                     <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 leading-tight">
