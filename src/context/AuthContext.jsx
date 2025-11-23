@@ -27,22 +27,35 @@ export const AuthProvider = ({ children }) => {
     }, [user]);
 
     const login = async (email, password) => {
-        console.log("🔐 Attempting Login for:", email);
-        try {
-            // Accept any credentials - create a mock user session
-            const mockUser = {
-                id: Date.now(), // Unique ID based on timestamp
-                name: email.split('@')[0] || 'Guest User', // Use email prefix as name
-                email: email,
-                password: password,
-                avatar: '',
-                createdAt: new Date().toISOString()
-            };
+        const cleanEmail = email.trim().toLowerCase();
+        const cleanPassword = password.trim();
+        console.log("🔐 Attempting Login for:", cleanEmail);
 
-            console.log("✅ Login Successful! User Details:", mockUser);
-            setUser(mockUser);
-            toast.success(`Welcome, ${mockUser.name}! 🎉`);
-            return { success: true };
+        try {
+            const response = await getUsers();
+            const users = response.data;
+
+            const foundUser = users.find(u =>
+                u.email.toLowerCase() === cleanEmail &&
+                u.password === cleanPassword
+            );
+
+            if (foundUser) {
+                console.log("✅ Login Successful! User Details:", foundUser);
+                setUser(foundUser);
+                toast.success(`Welcome back, ${foundUser.name}! 🎉`);
+                return { success: true };
+            } else {
+                console.warn("❌ Login Failed: Invalid credentials");
+                // Debug helper
+                const emailExists = users.some(u => u.email.toLowerCase() === cleanEmail);
+                if (emailExists) {
+                    console.log("⚠️ Email found, but password did not match.");
+                } else {
+                    console.log("⚠️ Email not found in database.");
+                }
+                return { success: false, message: 'Invalid email or password' };
+            }
         } catch (error) {
             console.error("Login error:", error);
             return { success: false, message: 'Login failed. Please try again.' };
@@ -81,7 +94,6 @@ export const AuthProvider = ({ children }) => {
     const updateProfile = async (updatedData) => {
         try {
             if (!user?.id) {
-                // If user doesn't have an ID (legacy/mock user), just update local state
                 setUser({ ...user, ...updatedData });
                 return { success: true };
             }

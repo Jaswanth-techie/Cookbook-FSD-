@@ -11,6 +11,9 @@ const RecipeCard = ({ recipe, toggleFavorite }) => {
                     src={recipe.image}
                     alt={recipe.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    onError={(e) => {
+                        e.target.src = "https://images.unsplash.com/photo-1495521821757-a1efb6729352?auto=format&fit=crop&w=800&q=80";
+                    }}
                 />
                 <button
                     onClick={(e) => {

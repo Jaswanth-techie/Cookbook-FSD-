@@ -10,26 +10,26 @@ const people = [
     {
         id: 1,
         name: "Jaswanth",
-        designation: "Lead Developer",
+        designation: "Lead Frontend Developer",
         image: team1,
         objectPosition: 'object-top',
     },
     {
         id: 2,
         name: "Seshasai",
-        designation: "Backend Architect",
+        designation: "Frontend Developer",
         image: team2,
     },
     {
         id: 3,
         name: "Losish",
-        designation: "UI/UX Designer",
+        designation: "UI Developer",
         image: team3,
     },
     {
         id: 4,
         name: "Karthik",
-        designation: "Product Manager",
+        designation: "React Developer",
         image: team4,
     },
 ];

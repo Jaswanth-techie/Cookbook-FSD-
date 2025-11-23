@@ -67,7 +67,7 @@ const RecipeDetail = () => {
     if (!recipe) return null;
 
     return (
-        <div className="min-h-screen bg-background pb-20">
+        <div className="min-h-screen bg-background dark:bg-slate-900 pb-20">
             {/* Hero Section */}
             <div className="relative h-[50vh] w-full">
                 <div className="absolute inset-0">
@@ -176,7 +176,7 @@ const RecipeDetail = () => {
                     {/* Ingredients Column */}
                     <div className="lg:col-span-4 space-y-6">
                         {/* Ingredients Container */}
-                        <div className="bg-white/80 dark:bg-slate-800/90 backdrop-blur-sm border-2 border-gray-200 dark:border-slate-600 rounded-3xl p-8 shadow-lg">
+                        <div className="bg-white dark:bg-slate-800 backdrop-blur-sm border-2 border-gray-200 dark:border-slate-600 rounded-3xl p-8 shadow-lg">
                             <div className="flex items-center justify-between mb-6">
                                 <h2 className="text-2xl font-bold text-textMain dark:text-white flex items-center">
                                     <span className="w-1.5 h-8 bg-primary rounded-full mr-3"></span>
@@ -210,8 +210,8 @@ const RecipeDetail = () => {
                                             {/* Custom Checkbox */}
                                             <div className="flex-shrink-0 mt-0.5">
                                                 <div className={`w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-all duration-300 ${checkedIngredients[index]
-                                                        ? 'bg-primary border-primary'
-                                                        : 'border-gray-300 dark:border-slate-500 group-hover:border-primary'
+                                                    ? 'bg-primary border-primary'
+                                                    : 'border-gray-300 dark:border-slate-500 group-hover:border-primary'
                                                     }`}>
                                                     {checkedIngredients[index] && (
                                                         <svg
@@ -229,8 +229,8 @@ const RecipeDetail = () => {
                                                 </div>
                                             </div>
                                             <span className={`text-textMain dark:text-slate-100 text-lg leading-relaxed font-medium transition-all duration-300 ${checkedIngredients[index]
-                                                    ? 'line-through opacity-50'
-                                                    : ''
+                                                ? 'line-through opacity-50'
+                                                : ''
                                                 }`}>
                                                 {ingredient}
                                             </span>
@@ -241,7 +241,7 @@ const RecipeDetail = () => {
                         </div>
 
                         {/* Order Missing Items - Separate Container */}
-                        <div className="bg-white/80 dark:bg-slate-800/90 backdrop-blur-sm border-2 border-gray-200 dark:border-slate-600 rounded-3xl p-6 shadow-lg">
+                        <div className="bg-white dark:bg-slate-800 backdrop-blur-sm border-2 border-gray-200 dark:border-slate-600 rounded-3xl p-6 shadow-lg">
                             <h3 className="text-lg font-bold text-textMain dark:text-white mb-4 flex items-center">
                                 <span className="mr-2">🛒</span>
                                 Missing Items? Order Here
@@ -297,7 +297,7 @@ const RecipeDetail = () => {
 
                     {/* Instructions Column */}
                     <div className="lg:col-span-8">
-                        <div className="bg-white/70 dark:bg-slate-800/80 backdrop-blur-sm border-2 border-gray-200 dark:border-slate-600 rounded-3xl p-8 md:p-10 shadow-lg">
+                        <div className="bg-white dark:bg-slate-800 backdrop-blur-sm border-2 border-gray-200 dark:border-slate-600 rounded-3xl p-8 md:p-10 shadow-lg">
                             <h2 className="text-3xl font-bold text-textMain dark:text-white mb-8 flex items-center">
                                 <span className="w-1.5 h-10 bg-primary rounded-full mr-4"></span>
                                 Instructions

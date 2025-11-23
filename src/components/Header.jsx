@@ -1,48 +1,101 @@
-import React from 'react';
-import { useLocation, Link } from 'react-router-dom';
-import PillNav from './PillNav';
+import React, { useState, useEffect } from 'react';
+import { NavLink, Link, useLocation } from 'react-router-dom';
+import { motion } from 'motion/react';
 import logo from '../assets/logo.jpg';
+import TopRightControls from './TopRightControls';
 
 const Header = () => {
+    const [scrolled, setScrolled] = useState(false);
     const location = useLocation();
+    const isHomePage = location.pathname === '/';
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 20);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const navItems = [
+        { label: 'Discover', href: '/' },
+        { label: 'Favorites', href: '/favorites' },
+        { label: 'About Us', href: '/about' },
+        { label: 'Create', href: '/add' }
+    ];
+
+    // Always use dark text (or white in dark mode) since we have a light background
+    const textColorClass = 'text-textMain dark:text-white';
+    const subTextColorClass = 'text-textMuted dark:text-slate-400';
+
+    const navBgClass = scrolled
+        ? 'bg-white/50 dark:bg-black/20 border-white/20 dark:border-white/10'
+        : 'bg-black/5 dark:bg-white/5 border-black/5 dark:border-white/5';
+
+    const getNavTextClass = (isActive) => {
+        if (isActive) return 'text-white shadow-md';
+        return 'text-textMain dark:text-slate-300 hover:text-primary dark:hover:text-white';
+    };
 
     return (
-        <div className="relative h-24">
-            {/* Logo and Brand Name on the left */}
-            <div className="absolute left-6 top-4 z-[1001]">
+        <header
+            className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 ${scrolled
+                    ? 'bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-lg py-3 border-b border-black/5 dark:border-white/5'
+                    : 'bg-transparent py-5'
+                }`}
+        >
+            <div className="container mx-auto px-6 flex items-center justify-between">
+                {/* Logo */}
                 <Link to="/" className="flex items-center gap-3 group">
-                    <img
-                        src={logo}
-                        alt="The Flavor Lab - CookBook & Recipes"
-                        className="h-16 w-16 rounded-full object-cover shadow-lg group-hover:shadow-xl transition-all border-2 border-primary/20 group-hover:border-primary/40 group-hover:scale-105"
-                    />
-                    <div className="flex flex-col">
-                        <span className="text-2xl font-bold text-textMain dark:text-white tracking-tight group-hover:text-primary transition-colors">
+                    <div className="relative">
+                        <div className="absolute inset-0 bg-primary/20 rounded-full blur-lg group-hover:blur-xl transition-all opacity-0 group-hover:opacity-100" />
+                        <img
+                            src={logo}
+                            alt="CookBook"
+                            className="relative h-12 w-12 rounded-full object-cover border-2 border-white/20 shadow-lg group-hover:scale-105 transition-transform"
+                        />
+                    </div>
+                    <div className="hidden md:flex flex-col">
+                        <span className={`text-xl font-bold tracking-tight transition-colors ${textColorClass}`}>
                             CookBook
                         </span>
-                        <span className="text-xs text-textMuted dark:text-[#94a3b8] font-medium tracking-wide">
+                        <span className={`text-[10px] uppercase tracking-widest font-medium transition-colors ${subTextColorClass}`}>
                             The Flavor Lab
                         </span>
                     </div>
                 </Link>
-            </div>
 
-            {/* Centered Navigation */}
-            <PillNav
-                items={[
-                    { label: 'Discover', href: '/' },
-                    { label: 'Favorites', href: '/favorites' },
-                    { label: 'About Us', href: '/about' },
-                    { label: 'Create', href: '/add' }
-                ]}
-                activeHref={location.pathname}
-                baseColor="transparent"
-                pillColor="#8b5cf6"
-                pillTextColor="#111827"
-                hoveredPillTextColor="#ffffff"
-                className="mx-auto"
-            />
-        </div>
+                {/* Navigation */}
+                <nav className={`hidden md:flex items-center gap-1 p-1.5 rounded-full backdrop-blur-md border shadow-sm transition-all ${navBgClass}`}>
+                    {navItems.map((item) => (
+                        <NavLink
+                            key={item.href}
+                            to={item.href}
+                            className={({ isActive }) => `
+                                relative px-6 py-2 rounded-full text-sm font-medium transition-all duration-300
+                                ${getNavTextClass(isActive)}
+                            `}
+                        >
+                            {({ isActive }) => (
+                                <>
+                                    {isActive && (
+                                        <motion.div
+                                            layoutId="nav-pill"
+                                            className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-full"
+                                            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                        />
+                                    )}
+                                    <span className="relative z-10">{item.label}</span>
+                                </>
+                            )}
+                        </NavLink>
+                    ))}
+                </nav>
+
+                {/* Controls */}
+                <TopRightControls />
+            </div>
+        </header>
     );
 };
 

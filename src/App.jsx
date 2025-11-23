@@ -23,8 +23,7 @@ function App() {
         <Router>
           <div className="flex flex-col min-h-screen bg-background dark:bg-[#0f172a] font-sans text-textMain dark:text-[#f8fafc]">
             <Header />
-            <TopRightControls />
-            <main className="flex-grow">
+            <main className="flex-grow pt-24">
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/recipe/:id" element={<RecipeDetail />} />
