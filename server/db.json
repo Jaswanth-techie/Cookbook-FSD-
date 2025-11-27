@@ -15,6 +15,14 @@
       "avatar": "",
       "createdAt": "2025-11-23T11:55:00.009Z",
       "id": "suZ7rDo"
+    },
+    {
+      "name": "Jaswanth",
+      "email": "hjakbgdys@gmail.com",
+      "password": "areyentraidhi",
+      "avatar": "",
+      "createdAt": "2025-11-25T04:58:57.713Z",
+      "id": "6jA_Ou-"
     }
   ],
   "recipes": [
@@ -193,7 +201,7 @@
         "Slice 2 onions thinly and deep fry until golden brown. Sprinkle fried onions on top of rice. Mix a pinch of saffron in 1/4 cup warm milk and drizzle over the rice. Add dots of ghee.",
         "Cover the pot tightly with aluminum foil and then a lid. Cook on high heat for 3-4 minutes, then reduce to low heat and cook for 20-25 minutes (dum cooking). Turn off heat and let it rest for 5 minutes before opening. Gently mix and serve hot with raita."
       ],
-      "prepTime": "30 mins",
+      "prepTime": "40 mins",
       "cookTime": "40 mins",
       "servings": 6,
       "image": "/assets/recipes/chicken-biryani.jpg",
@@ -286,7 +294,7 @@
         "Fill each cone with 1-2 tablespoons of potato filling. Seal the top edge with water, pressing firmly to ensure no gaps. Repeat with remaining dough and filling.",
         "Heat oil in a deep pan to 160-170°C (medium heat). Fry samosas in batches for 8-10 minutes, turning occasionally, until golden brown and crispy. Drain on paper towels. Serve hot with mint chutney and tamarind chutney. Perfect tea-time snack!"
       ],
-      "prepTime": "40 mins",
+      "prepTime": "50 mins",
       "cookTime": "20 mins",
       "servings": 6,
       "image": "/assets/recipes/samosas.jpg",
@@ -317,7 +325,7 @@
         "Heat a cast-iron skillet or tawa over high heat. Place the naan garlic-side down and cook for 1-2 minutes until bubbles form. Flip and cook for another 1-2 minutes until charred spots appear. For authentic texture, you can also stick it to the walls of a tandoor or very hot oven.",
         "Remove from heat and immediately brush generously with melted butter or ghee. Sprinkle with more chopped coriander. Serve hot with any curry, dal, or kebabs. Absolutely irresistible!"
       ],
-      "prepTime": "2 hrs",
+      "prepTime": "20 mins",
       "cookTime": "10 mins",
       "servings": 4,
       "image": "/assets/recipes/garlic-naan.png",
@@ -379,7 +387,7 @@
         "Melt 2 tbsp butter and baste the chicken. Return to oven and cook for another 5-10 minutes until chicken is charred in spots and cooked through (internal temperature 75°C/165°F).",
         "Remove from oven and let rest for 5 minutes. Garnish with fresh lemon wedges, sliced onions, and mint chutney. Serve hot with naan and a side salad. The smoky, spicy flavors are absolutely addictive!"
       ],
-      "prepTime": "8 hrs",
+      "prepTime": "20 mins",
       "cookTime": "30 mins",
       "servings": 4,
       "image": "/assets/recipes/tandoori-chicken.png",
@@ -410,7 +418,7 @@
         "Add the cooked lentils and beans along with their cooking liquid to the masala. Add 2 tbsp butter and mix well. Simmer on very low heat for 30-40 minutes, stirring occasionally. The longer it cooks, the creamier it becomes. Add water if it gets too thick.",
         "Finish with 1/4 cup heavy cream and 1 tbsp butter. Mix well and simmer for 5 more minutes. Garnish with a swirl of cream and fresh coriander. Serve hot with naan or jeera rice. This rich, creamy dal is pure comfort food!"
       ],
-      "prepTime": "12 hrs",
+      "prepTime": "15 mins",
       "cookTime": "1 hr",
       "servings": 6,
       "image": "/assets/recipes/dal-makhani.jpg",
@@ -603,7 +611,7 @@
         "Add ghee and cook on low heat, stirring continuously (ghota) until the mixture becomes sticky and elastic.",
         "Garnish with fried onions, cashew nuts, coriander, and lemon juice. Serve hot."
       ],
-      "prepTime": "4 hrs",
+      "prepTime": "30 mins",
       "cookTime": "2 hrs",
       "servings": 6,
       "image": "/assets/recipes/hyderabadi-haleem.png",
@@ -634,7 +642,7 @@
         "Seal the pot and cook on low heat (dum) for 45 minutes to 1 hour.",
         "Let it rest for 10 minutes before serving. Serve with raita and mirchi ka salan."
       ],
-      "prepTime": "12 hrs",
+      "prepTime": "40 mins",
       "cookTime": "1 hr",
       "servings": 6,
       "image": "/assets/recipes/mutton-biryani.jpg",
