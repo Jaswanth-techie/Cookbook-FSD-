@@ -25,19 +25,17 @@ const Header = () => {
         { label: 'Create', href: '/add' }
     ];
 
-    // Always use dark text (or white in dark mode) since we have a light background
-    // BUT if on Login page (which is dark), force white text
-    const textColorClass = isLoginPage ? 'text-white' : 'text-textMain dark:text-white';
-    const subTextColorClass = isLoginPage ? 'text-slate-300' : 'text-textMuted dark:text-slate-400';
+    // Use standard theme-aware colors for all pages
+    const textColorClass = 'text-gray-900 dark:text-white';
+    const subTextColorClass = 'text-gray-500 dark:text-slate-400';
 
     const navBgClass = scrolled
         ? 'bg-white/50 dark:bg-black/20 border-white/20 dark:border-white/10'
-        : (isLoginPage ? 'bg-white/10 border-white/10' : 'bg-black/5 dark:bg-white/5 border-black/5 dark:border-white/5');
+        : 'bg-black/5 dark:bg-white/5 border-black/5 dark:border-white/5';
 
     const getNavTextClass = (isActive) => {
         if (isActive) return 'text-white shadow-md';
-        if (isLoginPage) return 'text-white/90 hover:text-white hover:bg-white/10';
-        return 'text-textMain dark:text-slate-300 hover:text-primary dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10';
+        return 'text-gray-900 dark:text-slate-300 hover:text-primary dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10';
     };
 
     return (
