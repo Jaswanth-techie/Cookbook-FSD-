@@ -40,7 +40,7 @@ const Profile = () => {
                     <div className="md:ml-auto self-start mt-2">
                         <button
                             onClick={logout}
-                            className="px-6 py-2 bg-surfaceHighlight/50 dark:bg-[#334155]/50 hover:bg-red-500/10 dark:hover:bg-red-500/20 text-textMuted dark:text-slate-400 hover:text-red-600 dark:hover:text-red-400 border border-black/5 dark:border-white/5 hover:border-red-500/30 rounded-xl transition-all flex items-center gap-2"
+                            className="px-6 py-2 bg-gray-100 dark:bg-[#334155]/50 hover:bg-red-50 dark:hover:bg-red-500/20 text-gray-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-400 border border-gray-200 dark:border-white/5 hover:border-red-200 dark:hover:border-red-500/30 rounded-xl transition-all flex items-center gap-2"
                         >
                             <LogOut size={18} /> Sign Out
                         </button>
@@ -54,7 +54,7 @@ const Profile = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.1 + 0.2 }}
-                            className="bg-surfaceHighlight/30 dark:bg-[#334155]/30 border border-black/5 dark:border-white/5 p-6 rounded-2xl flex items-center gap-4 hover:bg-surfaceHighlight/50 dark:hover:bg-[#334155]/50 transition-colors"
+                            className="bg-gray-50 dark:bg-[#334155]/30 border border-gray-200 dark:border-white/5 p-6 rounded-2xl flex items-center gap-4 hover:bg-gray-100 dark:hover:bg-[#334155]/50 transition-colors"
                         >
                             <div className={`p-4 rounded-xl ${stat.bg} ${stat.color}`}>
                                 <stat.icon size={24} />

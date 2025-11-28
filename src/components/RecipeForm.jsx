@@ -50,9 +50,9 @@ const RecipeForm = ({ initialData, onSubmit, isEdit }) => {
     };
 
     const inputWrapperClasses = "relative group";
-    const inputClasses = "w-full pl-12 pr-4 py-3 bg-surfaceHighlight/30 border border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 text-white placeholder-textMuted/50 transition-all hover:bg-surfaceHighlight/50";
-    const iconClasses = "absolute left-4 top-1/2 -translate-y-1/2 text-textMuted group-focus-within:text-primary transition-colors";
-    const labelClasses = "block text-sm font-medium text-textMuted mb-2 ml-1";
+    const inputClasses = "w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-slate-700/50 border border-gray-200 dark:border-slate-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-400 transition-all hover:bg-gray-100 dark:hover:bg-slate-700";
+    const iconClasses = "absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-slate-400 group-focus-within:text-primary transition-colors";
+    const labelClasses = "block text-sm font-medium text-gray-700 dark:text-slate-300 mb-2 ml-1";
 
     return (
         <motion.form
@@ -60,7 +60,7 @@ const RecipeForm = ({ initialData, onSubmit, isEdit }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             onSubmit={handleSubmit(onFormSubmit)}
-            className="bg-surface/50 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl p-8 md:p-10"
+            className="bg-white dark:bg-slate-800 backdrop-blur-xl border border-gray-200 dark:border-slate-600 rounded-3xl shadow-2xl p-8 md:p-10"
         >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <div className="col-span-1 md:col-span-2">
@@ -79,7 +79,7 @@ const RecipeForm = ({ initialData, onSubmit, isEdit }) => {
                 <div className="col-span-1 md:col-span-2">
                     <label className={labelClasses}>Description</label>
                     <div className={inputWrapperClasses}>
-                        <AlignLeft size={20} className="absolute left-4 top-4 text-textMuted group-focus-within:text-primary transition-colors" />
+                        <AlignLeft size={20} className="absolute left-4 top-4 text-gray-400 dark:text-slate-400 group-focus-within:text-primary transition-colors" />
                         <textarea
                             {...register("description", { required: "Description is required" })}
                             rows="3"
@@ -170,7 +170,7 @@ const RecipeForm = ({ initialData, onSubmit, isEdit }) => {
 
             <div className="mb-8">
                 <div className="flex justify-between items-center mb-4">
-                    <label className="text-lg font-bold text-white flex items-center gap-2">
+                    <label className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
                         <span className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary">1</span>
                         Ingredients
                     </label>
@@ -201,7 +201,7 @@ const RecipeForm = ({ initialData, onSubmit, isEdit }) => {
                             <button
                                 type="button"
                                 onClick={() => removeIngredient(index)}
-                                className="text-textMuted hover:text-red-400 p-3 bg-surfaceHighlight/30 hover:bg-red-500/10 rounded-xl transition-colors border border-white/5 hover:border-red-500/30"
+                                className="text-gray-400 dark:text-slate-400 hover:text-red-400 p-3 bg-gray-50 dark:bg-slate-700/50 hover:bg-red-500/10 rounded-xl transition-colors border border-gray-200 dark:border-slate-600 hover:border-red-500/30"
                                 disabled={ingredientFields.length === 1}
                             >
                                 <Trash2 size={20} />
@@ -213,7 +213,7 @@ const RecipeForm = ({ initialData, onSubmit, isEdit }) => {
 
             <div className="mb-10">
                 <div className="flex justify-between items-center mb-4">
-                    <label className="text-lg font-bold text-white flex items-center gap-2">
+                    <label className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
                         <span className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-secondary">2</span>
                         Instructions
                     </label>
@@ -233,7 +233,7 @@ const RecipeForm = ({ initialData, onSubmit, isEdit }) => {
                             animate={{ opacity: 1, x: 0 }}
                             className="flex gap-3"
                         >
-                            <span className="py-3 text-textMuted font-bold w-8 text-center pt-4">{index + 1}.</span>
+                            <span className="py-3 text-gray-500 dark:text-slate-400 font-bold w-8 text-center pt-4">{index + 1}.</span>
                             <textarea
                                 {...register(`steps.${index}`, { required: true })}
                                 rows="2"
@@ -243,7 +243,7 @@ const RecipeForm = ({ initialData, onSubmit, isEdit }) => {
                             <button
                                 type="button"
                                 onClick={() => removeStep(index)}
-                                className="text-textMuted hover:text-red-400 p-3 bg-surfaceHighlight/30 hover:bg-red-500/10 rounded-xl self-start transition-colors border border-white/5 hover:border-red-500/30"
+                                className="text-gray-400 dark:text-slate-400 hover:text-red-400 p-3 bg-gray-50 dark:bg-slate-700/50 hover:bg-red-500/10 rounded-xl self-start transition-colors border border-gray-200 dark:border-slate-600 hover:border-red-500/30"
                                 disabled={stepFields.length === 1}
                             >
                                 <Trash2 size={20} />
@@ -253,11 +253,11 @@ const RecipeForm = ({ initialData, onSubmit, isEdit }) => {
                 </div>
             </div>
 
-            <div className="flex justify-end space-x-4 pt-8 border-t border-white/10">
+            <div className="flex justify-end space-x-4 pt-8 border-t border-gray-200 dark:border-slate-600">
                 <button
                     type="button"
                     onClick={() => navigate(-1)}
-                    className="px-8 py-3 border border-white/10 rounded-xl text-textMuted hover:text-white hover:bg-white/5 transition-colors flex items-center font-medium"
+                    className="px-8 py-3 border border-gray-200 dark:border-slate-600 rounded-xl text-gray-600 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors flex items-center font-medium"
                 >
                     <X size={20} className="mr-2" /> Cancel
                 </button>

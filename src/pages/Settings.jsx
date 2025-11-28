@@ -57,7 +57,7 @@ const Settings = () => {
                             type="text"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            className="w-full px-4 py-3 bg-surfaceHighlight/50 dark:bg-[#334155]/50 border border-black/10 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 text-textMain dark:text-white transition-all"
+                            className="w-full px-4 py-3 bg-gray-50 dark:bg-[#334155]/50 border border-gray-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 text-gray-900 dark:text-white transition-all"
                             placeholder="Enter your name"
                         />
                     </div>
@@ -70,7 +70,7 @@ const Settings = () => {
                             type="email"
                             value={user?.email || ''}
                             disabled
-                            className="w-full px-4 py-3 bg-surfaceHighlight/30 dark:bg-[#334155]/30 border border-black/5 dark:border-white/5 rounded-xl text-textMuted dark:text-slate-500 cursor-not-allowed"
+                            className="w-full px-4 py-3 bg-gray-100 dark:bg-[#334155]/30 border border-gray-200 dark:border-white/5 rounded-xl text-gray-500 dark:text-slate-500 cursor-not-allowed"
                         />
                         <p className="text-xs text-textMuted mt-2">Email cannot be changed</p>
                     </div>

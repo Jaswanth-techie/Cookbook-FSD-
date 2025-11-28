@@ -70,8 +70,8 @@ const Favorites = () => {
                 className="flex items-center gap-3 mb-8"
             >
                 <Heart className="text-primary fill-primary" size={32} />
-                <h1 className="text-3xl font-bold text-white">My Favorites</h1>
-                <span className="bg-surfaceHighlight/50 text-textMuted px-3 py-1 rounded-full text-sm font-medium border border-white/10">
+                <h1 className="text-3xl font-bold text-gray-900 dark:text-white">My Favorites</h1>
+                <span className="bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium border border-gray-200 dark:border-slate-600">
                     {recipes.length}
                 </span>
             </motion.div>
@@ -80,13 +80,13 @@ const Favorites = () => {
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="flex flex-col items-center justify-center py-20 text-center bg-surface/30 border border-white/5 rounded-3xl p-8"
+                    className="flex flex-col items-center justify-center py-20 text-center bg-white dark:bg-surface/30 border border-gray-200 dark:border-white/5 rounded-3xl p-8 shadow-sm dark:shadow-none"
                 >
-                    <div className="bg-surfaceHighlight/30 p-6 rounded-full mb-6">
-                        <Heart size={48} className="text-textMuted" />
+                    <div className="bg-gray-100 dark:bg-surfaceHighlight/30 p-6 rounded-full mb-6">
+                        <Heart size={48} className="text-gray-400 dark:text-textMuted" />
                     </div>
-                    <h2 className="text-2xl font-bold text-white mb-2">No favorites yet</h2>
-                    <p className="text-textMuted mb-8 max-w-md">
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">No favorites yet</h2>
+                    <p className="text-gray-600 dark:text-textMuted mb-8 max-w-md">
                         Start exploring our collection of delicious recipes and save the ones you love!
                     </p>
                     <Link
