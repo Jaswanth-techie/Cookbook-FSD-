@@ -15,6 +15,7 @@ import About from './pages/About';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
+import Events from './pages/Events';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/settings" element={<Settings />} />
+                <Route path="/events" element={<Events />} />
               </Routes>
             </main>
             <Footer />

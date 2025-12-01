@@ -52,10 +52,9 @@ const Footer = () => {
                         <h4 className="text-gray-900 dark:text-white font-bold text-lg mb-6">Explore</h4>
                         <ul className="space-y-4">
                             {[
-                                { label: 'Discover Recipes', href: '/' },
-                                { label: 'Trending Now', href: '/' },
-                                { label: 'Master Chefs', href: '/about' },
-                                { label: 'Culinary Events', href: '#' }
+                                { label: 'Favourites', href: '/favorites' },
+                                { label: 'About Us', href: '/about' },
+                                { label: 'Create', href: '/add' }
                             ].map((link) => (
                                 <li key={link.label}>
                                     <Link
@@ -94,28 +93,30 @@ const Footer = () => {
                     </div>
 
                     {/* Newsletter */}
+                    {/* Contact Us */}
                     <div>
-                        <h4 className="text-gray-900 dark:text-white font-bold text-lg mb-6">Stay Updated</h4>
-                        <p className="text-gray-500 dark:text-slate-400 text-sm mb-4">
-                            Subscribe to our newsletter for the latest recipes and cooking tips.
-                        </p>
-                        <form className="space-y-3">
-                            <div className="relative">
-                                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-slate-500" size={18} />
-                                <input
-                                    type="email"
-                                    placeholder="Your email address"
-                                    className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl py-3 pl-12 pr-4 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-slate-500 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
-                                />
-                            </div>
-                            <button
-                                type="button"
-                                className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primaryHover hover:to-secondary text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-primary/25 flex items-center justify-center gap-2 group"
-                            >
-                                Subscribe
-                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                            </button>
-                        </form>
+                        <h4 className="text-gray-900 dark:text-white font-bold text-lg mb-6">Contact Us</h4>
+                        <ul className="space-y-4">
+                            <li className="flex items-start gap-3 text-gray-500 dark:text-slate-400">
+                                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0"></span>
+                                <span>SRM University AP</span>
+                            </li>
+                            <li className="flex items-center gap-3 text-gray-500 dark:text-slate-400">
+                                <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span>
+                                <a
+                                    href="https://mail.google.com/mail/?view=cm&fs=1&to=hello@cookbook.com"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:text-primary transition-colors"
+                                >
+                                    hello@cookbook.com
+                                </a>
+                            </li>
+                            <li className="flex items-center gap-3 text-gray-500 dark:text-slate-400">
+                                <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span>
+                                <a href="tel:+919876543210" className="hover:text-primary transition-colors">+91 98765 43210</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
