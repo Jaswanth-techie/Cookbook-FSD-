@@ -15,4 +15,10 @@ export const getUsers = () => api.get('/users');
 export const createUser = (user) => api.post('/users', user);
 export const updateUser = (id, user) => api.put(`/users/${id}`, user);
 
+// Favorites APIs
+export const getFavorites = () => api.get('/favorites');
+export const getUserFavorites = (userId) => api.get(`/favorites?userId=${userId}`);
+export const addFavorite = (userId, recipeId) => api.post('/favorites', { userId, recipeId });
+export const removeFavorite = (id) => api.delete(`/favorites/${id}`);
+
 export default api;

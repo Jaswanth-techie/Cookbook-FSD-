@@ -1,19 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { getRecipe, deleteRecipe, updateRecipe } from '../services/api';
+import { getRecipe, deleteRecipe, getUserFavorites, addFavorite, removeFavorite } from '../services/api';
 import { Clock, Users, ArrowLeft, Edit, Trash2, Heart, ChefHat } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { useAuth } from '../context/AuthContext';
 
 const RecipeDetail = () => {
     const { id } = useParams();
     const navigate = useNavigate();
+    const { user } = useAuth();
     const [recipe, setRecipe] = useState(null);
     const [loading, setLoading] = useState(true);
     const [checkedIngredients, setCheckedIngredients] = useState([]);
+    const [isFavorite, setIsFavorite] = useState(false);
+    const [favoriteId, setFavoriteId] = useState(null);
 
     useEffect(() => {
         fetchRecipe();
-    }, [id]);
+        if (user?.id) {
+            checkIfFavorite();
+        }
+    }, [id, user?.id]);
 
     useEffect(() => {
         // Reset checklist when recipe changes
@@ -31,6 +38,22 @@ const RecipeDetail = () => {
             navigate('/');
         } finally {
             setLoading(false);
+        }
+    };
+
+    const checkIfFavorite = async () => {
+        try {
+            const response = await getUserFavorites(user.id);
+            const favorite = response.data.find(fav => fav.recipeId === id);
+            if (favorite) {
+                setIsFavorite(true);
+                setFavoriteId(favorite.id);
+            } else {
+                setIsFavorite(false);
+                setFavoriteId(null);
+            }
+        } catch (error) {
+            console.error('Failed to check favorite status');
         }
     };
 
@@ -53,11 +76,23 @@ const RecipeDetail = () => {
     };
 
     const toggleFavorite = async () => {
+        if (!user) {
+            toast.error('Please login to add favorites');
+            return;
+        }
+
         try {
-            const updatedRecipe = { ...recipe, isFavorite: !recipe.isFavorite };
-            await updateRecipe(recipe.id, updatedRecipe);
-            setRecipe(updatedRecipe);
-            toast.success(updatedRecipe.isFavorite ? 'Added to favorites' : 'Removed from favorites');
+            if (isFavorite && favoriteId) {
+                await removeFavorite(favoriteId);
+                setIsFavorite(false);
+                setFavoriteId(null);
+                toast.success('Removed from favorites');
+            } else {
+                const response = await addFavorite(user.id, id);
+                setIsFavorite(true);
+                setFavoriteId(response.data.id);
+                toast.success('Added to favorites');
+            }
         } catch (error) {
             toast.error('Failed to update favorite status');
         }
@@ -97,7 +132,7 @@ const RecipeDetail = () => {
                                     <span className="px-4 py-1.5 rounded-full bg-primary text-white text-sm font-bold shadow-lg tracking-wide">
                                         {recipe.cuisine}
                                     </span>
-                                    {recipe.isFavorite && (
+                                    {isFavorite && (
                                         <span className="px-3 py-1.5 rounded-full bg-red-500/20 text-red-400 border border-red-500/30 text-sm font-medium flex items-center gap-1">
                                             <Heart size={14} fill="currentColor" /> Favorite
                                         </span>
@@ -114,25 +149,29 @@ const RecipeDetail = () => {
                             <div className="flex gap-3">
                                 <button
                                     onClick={toggleFavorite}
-                                    className={`p-4 rounded-full backdrop-blur-xl border-2 transition-all duration-300 shadow-xl ${recipe.isFavorite ? 'bg-red-500 text-white border-red-500 hover:bg-red-600' : 'bg-white dark:bg-white/10 text-gray-700 dark:text-white border-gray-300 dark:border-white/20 hover:bg-gray-100 dark:hover:bg-white/20'}`}
-                                    title={recipe.isFavorite ? "Remove from favorites" : "Add to favorites"}
+                                    className={`p-4 rounded-full backdrop-blur-xl border-2 transition-all duration-300 shadow-xl ${isFavorite ? 'bg-red-500 text-white border-red-500 hover:bg-red-600' : 'bg-white dark:bg-white/10 text-gray-700 dark:text-white border-gray-300 dark:border-white/20 hover:bg-gray-100 dark:hover:bg-white/20'}`}
+                                    title={isFavorite ? "Remove from favorites" : "Add to favorites"}
                                 >
-                                    <Heart size={24} fill={recipe.isFavorite ? "currentColor" : "none"} />
+                                    <Heart size={24} fill={isFavorite ? "currentColor" : "none"} />
                                 </button>
-                                <Link
-                                    to={`/edit/${recipe.id}`}
-                                    className="p-4 rounded-full bg-white dark:bg-white/10 text-gray-700 dark:text-white backdrop-blur-xl border-2 border-gray-300 dark:border-white/20 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 shadow-xl"
-                                    title="Edit Recipe"
-                                >
-                                    <Edit size={24} />
-                                </Link>
-                                <button
-                                    onClick={handleDelete}
-                                    className="p-4 rounded-full bg-white dark:bg-white/10 text-gray-700 dark:text-white backdrop-blur-xl border-2 border-gray-300 dark:border-white/20 hover:bg-red-500 hover:text-white hover:border-red-500 transition-all duration-300 shadow-xl"
-                                    title="Delete Recipe"
-                                >
-                                    <Trash2 size={24} />
-                                </button>
+                                {user?.isAdmin && (
+                                    <>
+                                        <Link
+                                            to={`/edit/${recipe.id}`}
+                                            className="p-4 rounded-full bg-white dark:bg-white/10 text-gray-700 dark:text-white backdrop-blur-xl border-2 border-gray-300 dark:border-white/20 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 shadow-xl"
+                                            title="Edit Recipe"
+                                        >
+                                            <Edit size={24} />
+                                        </Link>
+                                        <button
+                                            onClick={handleDelete}
+                                            className="p-4 rounded-full bg-white dark:bg-white/10 text-gray-700 dark:text-white backdrop-blur-xl border-2 border-gray-300 dark:border-white/20 hover:bg-red-500 hover:text-white hover:border-red-500 transition-all duration-300 shadow-xl"
+                                            title="Delete Recipe"
+                                        >
+                                            <Trash2 size={24} />
+                                        </button>
+                                    </>
+                                )}
                             </div>
                         </div>
                     </div>

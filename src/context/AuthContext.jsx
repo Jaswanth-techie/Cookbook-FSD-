@@ -63,11 +63,16 @@ export const AuthProvider = ({ children }) => {
     };
 
     const register = async (name, email, password) => {
-        console.log("📝 Starting Registration for:", name, email);
+        // Clean and trim input data
+        const cleanName = name.trim();
+        const cleanEmail = email.trim().toLowerCase();
+        const cleanPassword = password.trim();
+
+        console.log("📝 Starting Registration for:", cleanName, cleanEmail);
         try {
             const response = await getUsers();
             const users = response.data;
-            const existingUser = users.find(u => u.email === email);
+            const existingUser = users.find(u => u.email.toLowerCase() === cleanEmail);
 
             if (existingUser) {
                 console.warn("⚠️ Registration Failed: User already exists");
@@ -75,11 +80,12 @@ export const AuthProvider = ({ children }) => {
             }
 
             const newUser = {
-                name,
-                email,
-                password,
+                name: cleanName,
+                email: cleanEmail,
+                password: cleanPassword,
                 avatar: '',
-                createdAt: new Date().toISOString()
+                createdAt: new Date().toISOString(),
+                isAdmin: false
             };
             const createResponse = await createUser(newUser);
             console.log("✅ Registration Successful! Saved to Database:", createResponse.data);

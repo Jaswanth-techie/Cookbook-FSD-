@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getRecipes, updateRecipe } from '../services/api';
+import { getRecipes, getUserFavorites, addFavorite, removeFavorite } from '../services/api';
 import RecipeCard from '../components/RecipeCard';
 import SearchBar from '../components/SearchBar';
 import AnimatedTooltipPreview from '../components/animated-tooltip-demo';
@@ -9,6 +9,7 @@ import { useAuth } from '../context/AuthContext';
 const Home = () => {
     const { user } = useAuth();
     const [recipes, setRecipes] = useState([]);
+    const [userFavorites, setUserFavorites] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [filterCuisine, setFilterCuisine] = useState('');
     const [sortBy, setSortBy] = useState('newest');
@@ -16,7 +17,10 @@ const Home = () => {
 
     useEffect(() => {
         fetchRecipes();
-    }, []);
+        if (user?.id) {
+            fetchUserFavorites();
+        }
+    }, [user?.id]);
 
     const fetchRecipes = async () => {
         try {
@@ -29,12 +33,35 @@ const Home = () => {
         }
     };
 
-    const toggleFavorite = async (recipe) => {
+    const fetchUserFavorites = async () => {
         try {
-            const updatedRecipe = { ...recipe, isFavorite: !recipe.isFavorite };
-            await updateRecipe(recipe.id, updatedRecipe);
-            setRecipes(recipes.map(r => r.id === recipe.id ? updatedRecipe : r));
-            toast.success(updatedRecipe.isFavorite ? 'Added to favorites' : 'Removed from favorites');
+            const response = await getUserFavorites(user.id);
+            setUserFavorites(response.data);
+        } catch (error) {
+            console.error('Failed to load user favorites');
+        }
+    };
+
+    const toggleFavorite = async (recipe) => {
+        if (!user) {
+            toast.error('Please login to add favorites');
+            return;
+        }
+
+        try {
+            const existingFavorite = userFavorites.find(
+                fav => fav.userId === user.id && fav.recipeId === recipe.id
+            );
+
+            if (existingFavorite) {
+                await removeFavorite(existingFavorite.id);
+                setUserFavorites(userFavorites.filter(fav => fav.id !== existingFavorite.id));
+                toast.success('Removed from favorites');
+            } else {
+                const response = await addFavorite(user.id, recipe.id);
+                setUserFavorites([...userFavorites, response.data]);
+                toast.success('Added to favorites');
+            }
         } catch (error) {
             toast.error('Failed to update favorite status');
         }
@@ -96,9 +123,17 @@ const Home = () => {
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                        {filteredRecipes.map(recipe => (
-                            <RecipeCard key={recipe.id} recipe={recipe} toggleFavorite={toggleFavorite} />
-                        ))}
+                        {filteredRecipes.map(recipe => {
+                            const isFavorite = userFavorites.some(fav => fav.recipeId === recipe.id);
+                            return (
+                                <RecipeCard
+                                    key={recipe.id}
+                                    recipe={recipe}
+                                    toggleFavorite={toggleFavorite}
+                                    isFavorite={isFavorite}
+                                />
+                            );
+                        })}
                     </div>
                 )
             }

@@ -1,23 +1,42 @@
 import React, { useState, useEffect } from 'react';
-import { getRecipes, updateRecipe } from '../services/api';
+import { getRecipes, getUserFavorites, removeFavorite } from '../services/api';
 import RecipeCard from '../components/RecipeCard';
 import toast from 'react-hot-toast';
 import { motion } from 'motion/react';
 import { Heart, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const Favorites = () => {
+    const { user } = useAuth();
     const [recipes, setRecipes] = useState([]);
+    const [userFavorites, setUserFavorites] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetchRecipes();
-    }, []);
+        if (user?.id) {
+            fetchFavorites();
+        } else {
+            setLoading(false);
+        }
+    }, [user?.id]);
 
-    const fetchRecipes = async () => {
+    const fetchFavorites = async () => {
         try {
-            const response = await getRecipes();
-            setRecipes(response.data.filter(r => r.isFavorite));
+            // Fetch user's favorites
+            const favoritesResponse = await getUserFavorites(user.id);
+            setUserFavorites(favoritesResponse.data);
+
+            // Fetch all recipes
+            const recipesResponse = await getRecipes();
+
+            // Filter recipes to only show favorited ones
+            const favoriteRecipeIds = favoritesResponse.data.map(fav => fav.recipeId);
+            const favoriteRecipes = recipesResponse.data.filter(recipe =>
+                favoriteRecipeIds.includes(recipe.id)
+            );
+
+            setRecipes(favoriteRecipes);
         } catch (error) {
             toast.error('Failed to load favorites');
         } finally {
@@ -26,14 +45,22 @@ const Favorites = () => {
     };
 
     const toggleFavorite = async (recipe) => {
+        if (!user) {
+            toast.error('Please login to manage favorites');
+            return;
+        }
+
         try {
-            const updatedRecipe = { ...recipe, isFavorite: !recipe.isFavorite };
-            await updateRecipe(recipe.id, updatedRecipe);
-            // Remove from list if unfavorited
-            if (!updatedRecipe.isFavorite) {
+            const existingFavorite = userFavorites.find(
+                fav => fav.userId === user.id && fav.recipeId === recipe.id
+            );
+
+            if (existingFavorite) {
+                await removeFavorite(existingFavorite.id);
+                setUserFavorites(userFavorites.filter(fav => fav.id !== existingFavorite.id));
                 setRecipes(recipes.filter(r => r.id !== recipe.id));
+                toast.success('Removed from favorites');
             }
-            toast.success('Removed from favorites');
         } catch (error) {
             toast.error('Failed to update favorite status');
         }
@@ -105,7 +132,7 @@ const Favorites = () => {
                 >
                     {recipes.map(recipe => (
                         <motion.div key={recipe.id} variants={item}>
-                            <RecipeCard recipe={recipe} toggleFavorite={toggleFavorite} />
+                            <RecipeCard recipe={recipe} toggleFavorite={toggleFavorite} isFavorite={true} />
                         </motion.div>
                     ))}
                 </motion.div>

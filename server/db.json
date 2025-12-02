@@ -6,7 +6,8 @@
       "email": "fsdeveloper@gmail.com",
       "password": "reactismyfavourite",
       "avatar": "",
-      "createdAt": "2025-11-21T13:13:40.202Z"
+      "createdAt": "2025-11-21T13:13:40.202Z",
+      "isAdmin": true
     },
     {
       "name": "jaswanth",
@@ -14,7 +15,8 @@
       "password": "Jaswanth1234!",
       "avatar": "",
       "createdAt": "2025-11-23T11:55:00.009Z",
-      "id": "suZ7rDo"
+      "id": "suZ7rDo",
+      "isAdmin": false
     },
     {
       "name": "Jaswanth",
@@ -22,7 +24,8 @@
       "password": "areyentraidhi",
       "avatar": "",
       "createdAt": "2025-11-25T04:58:57.713Z",
-      "id": "6jA_Ou-"
+      "id": "6jA_Ou-",
+      "isAdmin": false
     },
     {
       "id": "1a4d",
@@ -30,7 +33,44 @@
       "email": "alakaadhu@gmail.com",
       "password": "hkalnsd ",
       "avatar": "",
-      "createdAt": "2025-11-28T16:21:47.310Z"
+      "createdAt": "2025-11-28T16:21:47.310Z",
+      "isAdmin": false
+    },
+    {
+      "id": "d94d",
+      "name": "losish",
+      "email": "losish@gmail.com",
+      "password": "cookbook1234",
+      "avatar": "",
+      "createdAt": "2025-12-02T06:40:58.737Z",
+      "isAdmin": false
+    },
+    {
+      "id": "da3a",
+      "name": "chaithu ",
+      "email": "chaithu@gmail.com",
+      "password": "summerinternship",
+      "avatar": "",
+      "createdAt": "2025-12-02T07:06:24.155Z",
+      "isAdmin": false
+    },
+    {
+      "id": "4ba7",
+      "name": "sesha ",
+      "email": "sesha@gmail.com",
+      "password": "hJDNAD",
+      "avatar": "",
+      "createdAt": "2025-12-02T07:17:07.879Z",
+      "isAdmin": false
+    },
+    {
+      "id": "5053",
+      "name": "losishhhh",
+      "email": "losishhhh@gmail.com",
+      "password": "jsismyfavourite",
+      "avatar": "",
+      "createdAt": "2025-12-02T07:21:10.982Z",
+      "isAdmin": false
     }
   ],
   "recipes": [
@@ -126,7 +166,7 @@
         "Sweet",
         "Vegetarian"
       ],
-      "isFavorite": true
+      "isFavorite": false
     },
     {
       "id": "10",
@@ -188,7 +228,7 @@
         "Creamy",
         "Chicken"
       ],
-      "isFavorite": true
+      "isFavorite": false
     },
     {
       "id": "12",
@@ -219,7 +259,7 @@
         "Spicy",
         "Dinner"
       ],
-      "isFavorite": true
+      "isFavorite": false
     },
     {
       "id": "13",
@@ -312,7 +352,7 @@
         "Vegetarian",
         "Fried"
       ],
-      "isFavorite": true
+      "isFavorite": false
     },
     {
       "id": "16",
@@ -343,7 +383,7 @@
         "Side",
         "Vegetarian"
       ],
-      "isFavorite": true
+      "isFavorite": false
     },
     {
       "id": "17",
@@ -405,7 +445,7 @@
         "Spicy",
         "Chicken"
       ],
-      "isFavorite": true
+      "isFavorite": false
     },
     {
       "id": "19",
@@ -436,7 +476,7 @@
         "Creamy",
         "Lentils"
       ],
-      "isFavorite": true
+      "isFavorite": false
     },
     {
       "id": "20",
@@ -629,7 +669,7 @@
         "Meat",
         "Traditional"
       ],
-      "isFavorite": true
+      "isFavorite": false
     },
     {
       "id": "26",
@@ -660,7 +700,34 @@
         "Spicy",
         "Dinner"
       ],
-      "isFavorite": true
+      "isFavorite": false
+    },
+    {
+      "id": "d9c8",
+      "title": "fish fry ",
+      "description": "cook the recipe ",
+      "ingredients": [
+        "fish"
+      ],
+      "steps": [
+        "cook at normal heat"
+      ],
+      "prepTime": "40",
+      "cookTime": "1hr",
+      "servings": 2,
+      "image": "https://i0.wp.com/gomathirecipes.com/wp-content/uploads/2022/09/5-20.jpg?resize=500%2C500&ssl=1",
+      "cuisine": "indian",
+      "tags": [
+        "lunch"
+      ],
+      "isFavorite": false
+    }
+  ],
+  "favorites": [
+    {
+      "id": "489e",
+      "userId": "4ba7",
+      "recipeId": "26"
     }
   ]
 }

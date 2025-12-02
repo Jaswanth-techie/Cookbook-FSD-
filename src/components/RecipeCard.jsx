@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Clock, Users, Heart, ArrowRight } from 'lucide-react';
 
-const RecipeCard = ({ recipe, toggleFavorite }) => {
+const RecipeCard = ({ recipe, toggleFavorite, isFavorite = false }) => {
     return (
         <div className="group relative bg-surface dark:bg-[#1e293b] border border-black/5 dark:border-white/5 rounded-3xl overflow-hidden hover:border-primary/30 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 flex flex-col h-full">
             <div className="relative h-56 overflow-hidden">
@@ -20,9 +20,9 @@ const RecipeCard = ({ recipe, toggleFavorite }) => {
                         e.preventDefault();
                         toggleFavorite(recipe);
                     }}
-                    className={`absolute top-4 right-4 z-20 p-2.5 rounded-full backdrop-blur-md border border-white/10 transition-all duration-300 ${recipe.isFavorite ? 'bg-red-500/20 text-red-500 border-red-500/30' : 'bg-black/30 text-white/70 hover:bg-black/50 hover:text-white'}`}
+                    className={`absolute top-4 right-4 z-20 p-2.5 rounded-full backdrop-blur-md border border-white/10 transition-all duration-300 ${isFavorite ? 'bg-red-500/20 text-red-500 border-red-500/30' : 'bg-black/30 text-white/70 hover:bg-black/50 hover:text-white'}`}
                 >
-                    <Heart size={18} fill={recipe.isFavorite ? "currentColor" : "none"} />
+                    <Heart size={18} fill={isFavorite ? "currentColor" : "none"} />
                 </button>
                 <div className="absolute top-4 left-4 z-20">
                     <span className="px-3 py-1 rounded-full text-xs font-medium bg-primary/90 text-white backdrop-blur-sm shadow-lg">

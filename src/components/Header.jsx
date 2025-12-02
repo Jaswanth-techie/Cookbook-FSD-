@@ -3,10 +3,12 @@ import { NavLink, Link, useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
 import logo from '../assets/logo.jpg';
 import TopRightControls from './TopRightControls';
+import { useAuth } from '../context/AuthContext';
 
 const Header = () => {
     const [scrolled, setScrolled] = useState(false);
     const location = useLocation();
+    const { user } = useAuth();
     const isHomePage = location.pathname === '/';
     const isLoginPage = location.pathname === '/login';
 
@@ -18,12 +20,15 @@ const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const navItems = [
+    const allNavItems = [
         { label: 'Discover', href: '/' },
         { label: 'Favorites', href: '/favorites' },
         { label: 'About Us', href: '/about' },
-        { label: 'Create', href: '/add' }
+        { label: 'Create', href: '/add', adminOnly: true }
     ];
+
+    // Filter nav items based on user role
+    const navItems = allNavItems.filter(item => !item.adminOnly || user?.isAdmin);
 
     // Use standard theme-aware colors for all pages
     const textColorClass = 'text-gray-900 dark:text-white';
@@ -66,32 +71,34 @@ const Header = () => {
                     </div>
                 </Link>
 
-                {/* Navigation */}
-                <nav className={`hidden md:flex items-center gap-1 p-1.5 rounded-full backdrop-blur-md border shadow-sm transition-all ${navBgClass}`}>
-                    {navItems.map((item) => (
-                        <NavLink
-                            key={item.href}
-                            to={item.href}
-                            className={({ isActive }) => `
-                                relative px-6 py-2 rounded-full text-sm font-medium transition-all duration-300
-                                ${getNavTextClass(isActive)}
-                            `}
-                        >
-                            {({ isActive }) => (
-                                <>
-                                    {isActive && (
-                                        <motion.div
-                                            layoutId="nav-pill"
-                                            className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-full"
-                                            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                                        />
-                                    )}
-                                    <span className="relative z-10">{item.label}</span>
-                                </>
-                            )}
-                        </NavLink>
-                    ))}
-                </nav>
+                {/* Navigation - Hide on login page if not logged in */}
+                {!(isLoginPage && !user) && (
+                    <nav className={`hidden md:flex items-center gap-1 p-1.5 rounded-full backdrop-blur-md border shadow-sm transition-all ${navBgClass}`}>
+                        {navItems.map((item) => (
+                            <NavLink
+                                key={item.href}
+                                to={item.href}
+                                className={({ isActive }) => `
+                                    relative px-6 py-2 rounded-full text-sm font-medium transition-all duration-300
+                                    ${getNavTextClass(isActive)}
+                                `}
+                            >
+                                {({ isActive }) => (
+                                    <>
+                                        {isActive && (
+                                            <motion.div
+                                                layoutId="nav-pill"
+                                                className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-full"
+                                                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                            />
+                                        )}
+                                        <span className="relative z-10">{item.label}</span>
+                                    </>
+                                )}
+                            </NavLink>
+                        ))}
+                    </nav>
+                )}
 
                 {/* Controls */}
                 <TopRightControls />
